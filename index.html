@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
+
+        <title>Работа с DOM деревом</title>
+
+        <link
+            rel="canonical"
+            href="https://getbootstrap.com/docs/4.0/examples/album/"
+        />
+
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Custom styles for this template -->
+        <link
+            href="https://getbootstrap.com/docs/4.0/dist/css/album.css"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <main role="main">
+            <section class="jumbotron text-center">
+                <div class="container">
+                    <h1 class="jumbotron-heading">Album example</h1>
+                    <p class="lead text-muted">
+                        Something short and leading about the collection
+                        below—its contents, the creator, etc. Make it short and
+                        sweet, but not too short so folks don't simply skip over
+                        it entirely.
+                    </p>
+                    <p>
+                        <button href="#" class="btn link my-2 true_button">
+                            First action
+                        </button>
+                        <button href="#" class="btn link my-2">
+                            Secondary action
+                        </button>
+                    </p>
+                </div>
+            </section>
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row cards-row">
+                        <div class="card-example col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img
+                                    class="card-img-top"
+                                    data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                    alt="Card image cap"
+                                />
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Sample.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            history.scrollRestoration = "manual";
+            function shuffleArray(array) {
+                for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+
+                return array;
+            }
+
+            let words = [
+                "ability",
+                "able",
+                "aboard",
+                "about",
+                "above",
+                "accept",
+                "accident",
+                "according",
+                "account",
+                "accurate",
+                "acres",
+                "across",
+                "act",
+                "action",
+                "active",
+                "activity",
+                "actual",
+                "actually",
+                "add",
+                "addition",
+                "additional",
+                "adjective",
+                "adult",
+                "adventure",
+                "advice",
+                "affect",
+                "afraid",
+                "after",
+                "afternoon",
+                "again",
+                "against",
+                "age",
+                "ago",
+                "agree",
+                "ahead",
+                "aid",
+                "air",
+                "airplane",
+                "alike",
+                "alive",
+                "all",
+                "allow",
+                "almost",
+                "alone",
+                "along",
+                "aloud",
+                "alphabet",
+                "already",
+                "also",
+                "although",
+                "am",
+                "among",
+                "amount",
+                "ancient",
+                "angle",
+                "angry",
+                "animal",
+                "announced",
+                "another",
+                "answer",
+                "ants",
+                "any",
+                "anybody",
+                "anyone",
+                "anything",
+                "anyway",
+                "anywhere",
+                "apart",
+                "apartment",
+                "appearance",
+                "apple",
+                "applied",
+                "appropriate",
+                "are",
+                "area",
+                "arm",
+                "army",
+                "around",
+                "arrange",
+                "arrangement",
+                "Quest Academy",
+            ];
+            let card = document.querySelector(".card-example");
+            let cardsRow = document.querySelector(".cards-row");
+            shuffleArray(words).forEach((word) => {
+                let newCard = card.cloneNode(true);
+                newCard.querySelector(".card-text").innerHTML = word;
+                cardsRow.appendChild(newCard);
+            });
+            window.scrollTo(0, 0);
+        </script>
+
+        <script>
+            document.querySelector(".true_button").onclick = showButton;
+
+function showButton(event) {
+  let button = document.createElement('button');
+
+  button.innerHTML = 'Press here';
+  button.style.marginLeft = '5px';
+
+  button.onmouseover = function(event) {
+    button.style.backgroundColor = '#2FB310';
+  }
+
+    button.onmouseout = function(event) {
+    button.style.backgroundColor = '#eee';
+  }
+
+  button.classList.add('btn');
+  button.classList.add('link');
+  button.classList.add('my-2');
+
+  document.querySelector(".true_button").after(button);
+
+  button.onclick = findQuest;
+
+}
+
+function findQuest(event) {
+  let cards = document.querySelectorAll(".card");
+  let quest;
+
+  for (let elem of cards) {
+    let cardText = elem.querySelector(".card-text");
+    if (cardText.innerText == "Quest Academy") {
+        quest = elem;
+    }
+    }
+
+  quest.style.border = '4px solid #CA2311';
+  quest.scrollIntoView(top = true);
+}
+
+        </script>
+
+        <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+        <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+    </body>
+</html>
